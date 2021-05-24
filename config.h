@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:size=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -95,31 +95,80 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	/*
+    // 8 normal colors 
+	[0] = "black",
+	[1] = "red3",
+	[2] = "green3",
+	[3] = "yellow3",
+	[4] = "blue2",
+	[5] = "magenta3",
+	[6] = "cyan3",
+	[7] = "gray90",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	// 8 bright colors
+	[8] = "gray50",
+	[9] = "red",
+	[10] = "green",
+	[11] = "yellow",
+	[12] = "#5c5cff",
+	[13] = "magenta",
+	[14] = "cyan",
+	[15] = "white",
 
-	[255] = 0,
+    // [255] = 0,
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	// more colors can be added after 255 to use with DefaultXX
+	[256] = "#000000",
+	[257] = "#FFFFFF",*/
+
+    /*
+        // Dark
+    [0] = "#131513", // black
+    [1] = "#e6193c", // red
+    [2] = "#29a329", // green
+    [3] = "#c3c322", // yellow
+    [4] = "#3d62f5", // blue
+    [5] = "#ad2bee", // magenta
+    [6] = "#1999b3", // cyan
+    [7] = "#8ca68c", // white
+    
+    [8] = "#687d68", // black
+    [9] = "#e6193c", // red
+    [10] = "#29a329", // green
+    [11] = "#c3c322", // yellow
+    [12] = "#3d62f5", // blue
+    [13] = "#ad2bee", // magenta
+    [14] = "#1999b3", // cyan
+    [15] = "#f0fff0", // white
+
+    // backgrond and foreground respectively
+    [256] = "#000000",
+    [257] = "#FFFFFF",*/
+
+    // Solarized Dark
+    [0] = "#002b36", // black
+    [1] = "#dc322f", // red
+    [2] = "#859900", // green
+    [3] = "#b58900", // yellow
+    [4] = "#268bd2", // blue
+    [5] = "#6c71c4", // magenta
+    [6] = "#2aa198", // cyan
+    [7] = "#93a1a1", // white
+    
+    [8] = "#657b83", // black
+    [9] = "#dc322f", // red
+    [10] = "#859900", // green
+    [11] = "#b58900", // yellow
+    [12] = "#268bd2", // blue
+    [13] = "#6c71c4", // magenta
+    [14] = "#2aa198", // cyan
+    [15] = "#fdf6e3", // white
+
+    // backgrond and foreground respectively
+    [256] = "#002b36",
+    [257] = "#93a1a1",
+
 };
 
 
@@ -127,10 +176,13 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 257;
+
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
 
 /*
  * Default shape of cursor
@@ -139,7 +191,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers

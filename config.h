@@ -237,8 +237,15 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+static const char *const htop_cmd = "htop";
+static const char *const htop_args[] = {};
+
 static Shortcut shortcuts[] = {
-	/* mask                 keysym          function        argument */
+	// mask                 keysym          function        argument 
+	// Custom
+	{ MODKEY|ShiftMask, XK_t,          execlp,    { htop_cmd, htop_args } },
+	
+	// Default
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },

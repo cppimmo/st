@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Ubuntu Mono:size=12:antialias=true:autohint=true";
+static char *font = "Ubuntu Mono:size=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -243,7 +243,7 @@ static const char *const htop_args[] = {};
 static Shortcut shortcuts[] = {
 	// mask                 keysym          function        argument 
 	// Custom
-	{ MODKEY|ShiftMask, XK_t,          execlp,    { htop_cmd, htop_args } },
+	//{ MODKEY|ShiftMask, XK_t,          execlp,    { htop_cmd, htop_args } },
 	
 	// Default
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },

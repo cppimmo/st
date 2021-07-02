@@ -244,6 +244,8 @@ static Shortcut shortcuts[] = {
 	// mask                 keysym          function        argument 
 	// Custom
 	//{ MODKEY|ShiftMask, XK_t,          execlp,    { htop_cmd, htop_args } },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i	= -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i	= -1} },
 	
 	// Default
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },

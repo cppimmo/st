@@ -5,7 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Ubuntu Mono:size=14:antialias=true:autohint=true";
+static char *fonts[] = {
+	"Ubuntu Mono:size=14:antialias=true:autohint=true",
+	"Monospace:size=14:antialias=true:autohint=true",	
+};
+
+static size_t currentfont = 0;
 static int borderpx = 2;
 
 /*
@@ -146,7 +151,7 @@ static const char *colorname[] = {
     [256] = "#000000",
     [257] = "#FFFFFF",*/
 
-    // Solarized Dark
+    /* // Solarized Dark
     [0] = "#002b36", // black
     [1] = "#dc322f", // red
     [2] = "#859900", // green
@@ -167,8 +172,57 @@ static const char *colorname[] = {
 
     // backgrond and foreground respectively
     [256] = "#002b36",
-    [257] = "#93a1a1",
+    [257] = "#93a1a1",*/
 
+	// 3024.dark
+	// 8 normal colors
+	[0] = "#090300", 
+	[1] = "#db2d20", 
+	[2] = "#01a252", 
+	[3] = "#fded02", 
+	[4] = "#01a0e4", 
+	[5] = "#a16a94", 
+	[6] = "#b5e4f4", 
+	[7] = "#a5a2a2", 
+
+	// 8 bright colors
+	[8]  = "#5c5855",
+	[9]  = "#db2d20",
+	[10] = "#01a252",
+	[11] = "#fded02",
+	[12] = "#01a0e4",
+	[13] = "#a16a94",
+	[14] = "#b5e4f4",
+	[15] = "#f7f7f7",
+
+	// special colors
+	[256] = "#090300", 
+	[257] = "#a5a2a2", 
+
+	/* // Monokai.dark
+	[0] = "#272822", 
+	[1] = "#f92672", 
+	[2] = "#a6e22e", 
+	[3] = "#f4bf75", 
+	[4] = "#66d9ef", 
+	[5] = "#ae81ff", 
+	[6] = "#a1efe4", 
+	[7] = "#f8f8f2", 
+
+	// 8 bright colors
+	[8]  = "#75715e", 
+	[9]  = "#f92672", 
+	[10] = "#a6e22e", 
+	[11] = "#f4bf75", 
+	[12] = "#66d9ef", 
+	[13] = "#ae81ff", 
+	[14] = "#a1efe4", 
+	[15] = "#f9f8f5", 
+
+	// special colors
+	[256] = "#272822", 
+	[257] = "#f8f8f2", */
+	
 };
 
 
@@ -185,13 +239,20 @@ static unsigned int defaultitalic = 7;
 static unsigned int defaultunderline = 7;
 
 /*
- * Default shape of cursor
- * 2: Block ("█")
- * 4: Underline ("_")
- * 6: Bar ("|")
- * 7: Snowman ("☃")
- */
-static unsigned int cursorshape = 6;
+* https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
+* Default style of cursor
+* 0: Blinking block
+* 1: Blinking block (default)
+* 2: Steady block ("â–ˆ")
+* 3: Blinking underline
+* 4: Steady underline ("_")
+* 5: Blinking bar
+* 6: Steady bar ("|")
+* 7: Blinking st cursor
+* 8: Steady st cursor
+*/
+static unsigned int cursorstyle = 5;
+static Rune stcursor = 0x2603; /* snowman (U+2603) */
 
 /*
  * Default columns and rows numbers
@@ -260,6 +321,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_S,           cyclefonts,     {}        },
 };
 
 /*

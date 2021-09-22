@@ -175,8 +175,7 @@ static const char *colorname[] = {
     [256] = "#002b36",
     [257] = "#93a1a1",*/
 
-	
-	// 3024.dark
+	/* // 3024.dark
 	// 8 normal colors
 	[0] = "#090300", 
 	[1] = "#db2d20", 
@@ -199,7 +198,7 @@ static const char *colorname[] = {
 
 	// special colors
 	[256] = "#090300", 
-	[257] = "#a5a2a2",
+	[257] = "#a5a2a2",*/
 
 	/* // Monokai.dark
 	[0] = "#272822", 
@@ -224,6 +223,33 @@ static const char *colorname[] = {
 	// special colors
 	[256] = "#272822", 
 	[257] = "#f8f8f2", */
+
+	// Dark Black
+	/* 8 normal colors */
+	[0] = "black",
+	[1] = "red3",
+	[2] = "green3",
+	[3] = "yellow3",
+	[4] = "blue2",
+	[5] = "magenta3",
+	[6] = "cyan3",
+	[7] = "gray90",
+
+	/* 8 bright colors */
+	[8] = "gray50",
+	[9] = "red",
+	[10] = "green",
+	[11] = "yellow",
+	[12] = "#5c5cff",
+	[13] = "magenta",
+	[14] = "cyan",
+	[15] = "white",
+
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	[256] = "black",
+	[257] = "white"
 };
 
 
